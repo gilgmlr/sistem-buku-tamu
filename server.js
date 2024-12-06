@@ -9,7 +9,6 @@ const subBagRoutes = require('./routes/subBagRoutes');
 const tiketAntreanRoutes = require('./routes/tiketAntreanRoutes');
 const tiketTamuRoutes = require('./routes/tiketTamuRoutes');
 const identitasTamuRoutes = require('./routes/identitasTamuRoutes');
-const dukcapilRoutes = require('./routes/dukcapilRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -27,7 +26,6 @@ app.use('/api', subBagRoutes);
 app.use('/api', tiketAntreanRoutes);
 app.use('/api', tiketTamuRoutes);
 app.use('/api', identitasTamuRoutes);
-app.use('/api', dukcapilRoutes);
 
 
 // Sync database
