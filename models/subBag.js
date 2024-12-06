@@ -21,9 +21,9 @@ const SubBag = sequelize.define('SubBag', {
     allowNull: true,
   },
 }, {
-  freezeTableName: true, // Nama tabel tetap, tidak dijadikan '..s'
-  tableName: 'subbag',   // Pastikan nama tabel sesuai dengan database
-  timestamps: false,     // Nonaktifkan createdAt dan updatedAt
+  freezeTableName: true, 
+  tableName: 'subbag',   
+  timestamps: false,     
 });
 
 // Menetapkan relasi dengan tabel 'Bagian'
