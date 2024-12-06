@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "3dc0c922-9fdd-4584-b40d-1a7d4d63b5aa",
+		"name": "SISTEM-BUKU-TAMU",
+		"description": "# 🚀 Get started here\n\nThis template guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this template**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these [request](https://learning.postman.com/docs/sending-requests/requests/) types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT request.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n ```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a [variable](https://learning.postman.com/docs/sending-requests/variables/) called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Scripts\" tab**\n\nAdding tests to your requests can help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/fa30ea0a-373d-4545-a668-e7b283cca343/aW1hZ2UucG5n\" alt=\"\" height=\"1530\" width=\"2162\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n    \n- Add more [scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/) to verify if the API works as expected and execute workflows.\n    \n\n## 💡Related templates\n\n[API testing basics](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9a37a28-055b-49cd-8c7e-97494a21eb54&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[API documentation](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=e9c28f47-1253-44af-a2f3-20dce4da1f18&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)  \n[Authorization methods](https://go.postman.co/redirect/workspace?type=personal&collectionTemplateId=31a9a6ed-4cdf-4ced-984c-d12c9aec1c27&sourceTemplateId=ddb19591-3097-41cf-82af-c84273e56719)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39485696"
+	},
+	"item": [
+		{
+			"name": "Bagian",
+			"item": [
+				{
+					"name": "Bagian - Create",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"KodeBagian\": \"D02\",\n  \"NamaBagian\": \"Bagian IT\",\n  \"Keterangan\": \"Teknologi Informasi\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bagian",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bagian"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Bagian - Get",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bagian",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bagian"
+							]
+						},
+						"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+					},
+					"response": []
+				},
+				{
+					"name": "Bagian - Get Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/bagian/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bagian",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bagian - Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"NamaBagian\": \"Bagian Teknologi\",\n  \"Keterangan\": \"Divisi IT dan Support\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bagian/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bagian",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02"
+								}
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Bagian - Delete",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/bagian/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"bagian",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubBag",
+			"item": [
+				{
+					"name": "SubBag - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"KdSubBag\": \"D02-01\",\r\n  \"KodeBagian\": \"D02\",\r\n  \"Jabatan\": \"Kepala SubBag\",\r\n  \"Keterangan\": \"Bagian Operasional\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/subbag",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subbag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubBag - Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/subbag",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subbag"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubBag - Get Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/subbag/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subbag",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubBag - Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"KdSubBag\": \"D02-01\",\r\n  \"KodeBagian\": \"D02\",\r\n  \"Jabatan\": \"Kepala SubBag Update\",\r\n  \"Keterangan\": \"Bagian Operasional Update\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/subbag/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subbag",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SubBag - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/subbag/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"subbag",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "D02-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TiketAntrean",
+			"item": [
+				{
+					"name": "TiketAntrean - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoTiket\": \"T001\",\r\n  \"TglBuatTiket\": \"2023-12-06\",\r\n  \"StatusTiket\": \"Berlaku\",\r\n  \"StatusCetak\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tiketantrean",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tiketantrean"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketAntrean - Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tiketantrean",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tiketantrean"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketAntran - Get Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tiketantrean/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tiketantrean",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "T001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketAntrean - Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoTiket\": \"T001\",\r\n  \"TglBuatTiket\": \"2023-12-06\",\r\n  \"StatusTiket\": \"Kadaluarsa\",\r\n  \"StatusCetak\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tiketantrean/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tiketantrean",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "T001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketAntrean - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tiketantrean/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tiketantrean",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "T001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "IdentitasTamu",
+			"item": [
+				{
+					"name": "IdentitasTamu - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoIdentitas\": \"3273221306720011\",\r\n  \"Nama\": \"Aditya Eprisi\",\r\n  \"TempatLahir\": \"Bandar Lampung\",\r\n  \"TglLahir\": \"2006-03-02\",\r\n  \"JenisKelamin\": \"L\",\r\n  \"Alamat\": \"Jl. Hanjuang 6 No.200 Blok H7\",\r\n  \"NoHandphone\": \"081234567890\",\r\n  \"TlpRmh\": \"072123456789\",\r\n  \"Email\": \"aditya@example.com\",\r\n  \"KdPropinsi\": \"01\",\r\n  \"KdKotaKabupaten\": \"1234\",\r\n  \"KdKecamatan\": \"567890\",\r\n  \"KdKelurahan\": \"123456789\",\r\n  \"Kodepos\": \"12345\",\r\n  \"KdJenisId\": \"1\",\r\n  \"PhotoDirKtp\": \"base64EncodedImageDataHere\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/identitastamu",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"identitastamu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdentitasTamu - Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/identitastamu",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"identitastamu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdentitasTamu - Get Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/identitastamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"identitastamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3273221306720011"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdentitasTamu - Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoIdentitas\": \"3273221306720011\",\r\n  \"Nama\": \"Aditya Eprisi\",\r\n  \"TempatLahir\": \"Sukabumi\",\r\n  \"TglLahir\": \"2006-03-02\",\r\n  \"JenisKelamin\": \"L\",\r\n  \"Alamat\": \"Jl. Hanjuang 6 No.200 Blok H7\",\r\n  \"NoHandphone\": \"081234567890\",\r\n  \"TlpRmh\": \"072123456789\",\r\n  \"Email\": \"aditya@example.com\",\r\n  \"KdPropinsi\": \"01\",\r\n  \"KdKotaKabupaten\": \"1234\",\r\n  \"KdKecamatan\": \"567890\",\r\n  \"KdKelurahan\": \"123456789\",\r\n  \"Kodepos\": \"12345\",\r\n  \"KdJenisId\": \"1\",\r\n  \"PhotoDirKtp\": \"base64EncodedImageDataHere\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/identitastamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"identitastamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3273221306720011"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "IdentitasTamu - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/identitastamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"identitastamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3273221306720011"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TiketTamu",
+			"item": [
+				{
+					"name": "TiketTamu - Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoTiket\": \"TT0001\",\r\n  \"NoIdentitas\": \"3273221306720011\",\r\n  \"Nama\": \"Aditya Eprisi\",\r\n  \"KdBagSubSeksi\": \"D02\",\r\n  \"KdSubBagSeksi\": \"D02-01\",\r\n  \"Jabatan\": \"Kepala SubBag\",\r\n  \"KeperluanBertamu\": \"Rapat\",\r\n  \"TglMintaBertamu\": \"2023-12-07\",\r\n  \"MintaJamBertamu\": \"10:00:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tikettamu",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tikettamu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketTamu - Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tikettamu",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tikettamu"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketTamu - Get Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tikettamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tikettamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "TT0001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketTamu - Update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"NoTiket\": \"TT0001\",\r\n  \"NoIdentitas\": \"3273221306720011\",\r\n  \"Nama\": \"Aditya Update\",\r\n  \"KdBagSubSeksi\": \"D02\",\r\n  \"KdSubBagSeksi\": \"D02-01\",\r\n  \"Jabatan\": \"Kepala SubBag\",\r\n  \"KeperluanBertamu\": \"Rapat\",\r\n  \"TglMintaBertamu\": \"2023-12-07\",\r\n  \"MintaJamBertamu\": \"10:00:00\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/tikettamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tikettamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "TT0001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TiketTamu - Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/tikettamu/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"tikettamu",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "TT0001"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
