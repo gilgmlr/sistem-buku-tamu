@@ -15,9 +15,9 @@ const Bagian = sequelize.define('Bagian', {
     type: DataTypes.STRING(60),
   },
 }, {
-  freezeTableName: true, 
-  tableName: 'bagian',   
-  timestamps: false,     
+  freezeTableName: true, // Nama tabel tetap, tidak dijadikan '..s'
+  tableName: 'bagian',   // Pastikan nama tabel sesuai dengan database
+  timestamps: false,     // Nonaktifkan createdAt dan updatedAt
 });
 
 module.exports = Bagian;
