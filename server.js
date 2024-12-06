@@ -3,6 +3,14 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const sequelize = require('./config/database');
 
+// Import routes
+const bagianRoutes = require('./routes/bagianRoutes');
+const subBagRoutes = require('./routes/subBagRoutes');
+const tiketAntreanRoutes = require('./routes/tiketAntreanRoutes');
+const tiketTamuRoutes = require('./routes/tiketTamuRoutes');
+const identitasTamuRoutes = require('./routes/identitasTamuRoutes');
+const dukcapilRoutes = require('./routes/dukcapilRoutes');
+
 // Load environment variables
 dotenv.config();
 
@@ -12,6 +20,15 @@ const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.json());
+
+// Register routes
+app.use('/api', bagianRoutes);
+app.use('/api', subBagRoutes);
+app.use('/api', tiketAntreanRoutes);
+app.use('/api', tiketTamuRoutes);
+app.use('/api', identitasTamuRoutes);
+app.use('/api', dukcapilRoutes);
+
 
 // Sync database
 sequelize.sync({ force: false })
